@@ -1,162 +1,148 @@
-📊 Determinantes Socioeconômicos do Voto nas Eleições de 2002
+# 📊 Determinantes Socioeconômicos do Voto nas Eleições de 2002
 
-Projeto acadêmico desenvolvido na Universidade Federal de São Carlos (UFSCar), no Departamento de Estatística, com o objetivo de investigar a relação entre indicadores socioeconômicos e o padrão de votação no segundo turno das eleições presidenciais brasileiras de 2002.
+Projeto acadêmico desenvolvido na disciplina de Estatística Multivariada com o objetivo de investigar a relação entre indicadores socioeconômicos e o padrão de votação no segundo turno das eleições presidenciais brasileiras de 2002.
 
-Autor: Arthur Pereira Gon
+Autor: **Arthur Pereira Gon**
 
-🎯 Objetivo
+---
+
+## 🎯 Objetivo
 
 Analisar como variáveis socioeconômicas, educacionais, demográficas e de saúde influenciam a predominância de votos na:
 
-Oposição (Lula)
+- Oposição (Lula)
+- Situação (José Serra)
 
-Situação (José Serra)
+Para isso, foi utilizada **Análise Fatorial (AF)** como técnica de redução de dimensionalidade.
 
-Para isso, foi utilizada Análise Fatorial (AF) como técnica de redução de dimensionalidade, permitindo identificar fatores latentes que explicam o comportamento conjunto das variáveis.
+---
 
-🗂️ Base de Dados
+## 🗂️ Base de Dados
 
-O conjunto de dados contém informações dos municípios da região Sudeste do Brasil, incluindo:
+O conjunto de dados contém informações dos municípios da região Sudeste do Brasil.
 
-🗳️ Variáveis Eleitorais
+### Variáveis Utilizadas
 
-Oposicao
+**Indicadores Socioeconômicos**
+- IDHM
+- IDHL
+- IDHE
 
-Situacao
+**Indicadores Educacionais**
+- Alfab00
 
-OposicaoGanha
+**Indicadores de Saúde**
+- Medico00
 
-📈 Indicadores Socioeconômicos
+**Indicadores Demográficos**
+- Pop2000
 
-IDHM
+**Variável Resposta**
+- OposicaoGanha (1 = Oposição venceu | 0 = Situação venceu)
 
-IDHL
+---
 
-IDHE
+## 🔎 Metodologia
 
-🎓 Indicadores Educacionais
+A análise foi conduzida nas seguintes etapas:
 
-Alfab00
+1. Análise descritiva (médias e desvios padrão)
+2. Construção da matriz de correlação
+3. Verificação da adequação via teste KMO
+4. Definição do número de fatores (Critério de Kaiser + Scree Plot)
+5. Extração dos fatores principais
+6. Interpretação das cargas fatoriais
+7. Análise dos escores fatoriais
+8. Comparação dos escores com o resultado eleitoral (boxplots)
 
-🏥 Indicadores de Saúde
+---
 
-Medico00
+## 📊 Principais Resultados
 
-👥 Indicadores Demográficos
-
-Pop2000
-
-🔎 Metodologia
-
-A análise seguiu as seguintes etapas:
-
-Análise Descritiva
-
-Cálculo de médias e desvios padrão
-
-Identificação da necessidade de uso da matriz de correlação
-
-Matriz de Correlação
-
-Identificação de alta correlação entre IDHM, IDHL, IDHE e Alfab00
-
-Baixa correlação da variável Pop2000 com as demais
-
-Definição do Número de Fatores
-
-Critério de autovalores maiores que 1
-
-Scree Plot
-
-Escolha de 2 fatores principais
-
-Teste KMO
-
-KMO Geral = 0.69
-
-Adequação considerada razoável para aplicação da Análise Fatorial
-
-Extração e Interpretação dos Fatores
-
-📊 Principais Resultados
-🔹 Fator 1 — Desenvolvimento Socioeconômico
+### 🔹 Fator 1 — Desenvolvimento Socioeconômico
 
 Altas cargas fatoriais para:
 
-IDHM
-
-IDHL
-
-IDHE
-
-Alfab00
+- IDHM
+- IDHL
+- IDHE
+- Alfab00
 
 Interpretação:
 Representa um índice de desenvolvimento socioeconômico e educacional.
 
-Municípios com maiores valores nesse fator tendem a:
+Municípios com maiores escores neste fator apresentaram maior tendência de voto na oposição.
 
-Ter maior IDH
+---
 
-Maior taxa de alfabetização
+### 🔹 Fator 2 — Dimensão Populacional
 
-Maior infraestrutura
+Maior influência de:
 
-Maior probabilidade de vitória da oposição
-
-🔹 Fator 2 — Dimensão Populacional
-
-Altas cargas fatoriais para:
-
-Pop2000
-
-Medico00 (contribuição moderada)
+- Pop2000
+- Medico00 (contribuição moderada)
 
 Interpretação:
-Representa uma dimensão associada ao tamanho populacional dos municípios.
+Representa o tamanho populacional dos municípios.
 
-Exemplos de municípios com altos escores nesse fator:
+Grandes centros urbanos apresentaram escores mais elevados neste fator.
 
-São Paulo
+---
 
-Rio de Janeiro
+## 📈 Variância Explicada
 
-Belo Horizonte
+- Fator 1: 61%
+- Fator 2: 18%
+- Variância acumulada: 79%
 
-📌 Conclusões
+A utilização de dois fatores mostrou-se adequada para representar a estrutura dos dados.
 
-O desenvolvimento socioeconômico mostrou-se um fator importante na diferenciação do padrão de voto.
+---
 
-Municípios mais desenvolvidos apresentaram tendência maior de voto na oposição.
+## 📦 Pacotes Utilizados (R)
 
-A dimensão populacional também influencia o comportamento eleitoral, especialmente nas capitais e grandes centros urbanos.
+```r
+library(psych)
+library(dplyr)
+library(GPArotation)
+library(readxl)
+library(corrplot)
+library(ggplot2)
+library(factoextra)
+```
 
-A Análise Fatorial permitiu reduzir a complexidade dos dados mantendo aproximadamente 79% da variância explicada.
+---
 
-🛠️ Técnicas Estatísticas Utilizadas
+## 📌 Conclusão
 
-Estatística Descritiva
+A análise sugere que:
 
-Matriz de Correlação
+- Municípios com maior desenvolvimento socioeconômico apresentaram maior probabilidade de voto na oposição.
+- A dimensão populacional teve influência menos expressiva quando comparada ao fator socioeconômico.
+- A Análise Fatorial foi eficiente na redução da dimensionalidade e interpretação estrutural dos dados.
 
-Critério de Kaiser (autovalores > 1)
+---
 
-Scree Plot
+## 🚀 Possíveis Extensões
 
-Teste KMO
+- Regressão logística utilizando os escores fatoriais
+- Aplicação de modelos de cluster
+- Comparação com eleições posteriores
+- Inclusão de novas variáveis socioeconômicas
 
-Análise Fatorial por Componentes Principais
+---
 
-📚 Contexto Acadêmico
+## 📂 Estrutura do Projeto
 
-Projeto desenvolvido na disciplina de Estatística Multivariada, com foco em interpretação estatística e aplicação prática de métodos de redução de dimensionalidade.
+```
+├── DadosS.xlsx
+├── codigo_analise.R
+├── Relatorio.pdf
+└── README.md
+```
 
-🚀 Possíveis Extensões
+---
 
-Aplicação de modelos de regressão logística
+## 🏫 Contexto Acadêmico
 
-Comparação com eleições posteriores
-
-Uso de modelos de cluster para segmentação de municípios
-
-Inclusão de variáveis adicionais como renda per capita e desigualdade
+Projeto desenvolvido na disciplina de Estatística Multivariada.
